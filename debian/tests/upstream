@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+indir=debian/tests/cudf
+outdir=${TMPDIR-/tmp}
+
+for infile in $indir/*.cudf
+do
+    for options in trendy paranoid "-new" "-count(new)"
+    do
+	cudf=$(basename $infile)
+	outfile=$outdir/${cudf%.cudf}.sol
+	checkfile=$outdir/${cudf%.cudf}.check
+	
+	echo "============================================" >&2
+	echo "Run test \"$cudf\" with options \"$options\"." >&2
+	
+	aspcud $infile $outfile $options 1>&2
+	cudf-check -cudf $infile -sol $outfile > $checkfile
+	cat $checkfile >&2
+	grep -q "is_solution: true" $checkfile
+    done
+done

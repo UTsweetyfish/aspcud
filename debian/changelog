@@ -1,0 +1,250 @@
+aspcud (1:1.9.4-5) UNRELEASED; urgency=medium
+
+  * update
+
+ -- Ralf Treinen <treinen@debian.org>  Thu, 07 Jul 2022 16:34:51 +0800
+
+aspcud (1:1.9.4-5) unstable; urgency=medium
+
+  [ Anton Gladky ]
+  * Fix FTBFS against boost_1,74. (closes: #974539)
+
+  [ Ralf Treinen ]
+  * Update homepage, thanks to Ivo De Decker (closes: #960879)
+  * Build-depend on debian-compat, drop file debian/compat
+  * Debhelper compatibility level 13 (no change)
+  * Set Rules-Requires-Root=no
+  * Standards-Version 4.5.0 (no change)
+
+ -- Ralf Treinen <treinen@debian.org>  Thu, 12 Nov 2020 20:37:06 +0100
+
+aspcud (1:1.9.4-2) unstable; urgency=medium
+
+  * Update Vcs-* to salsa
+  * Standards-Version 4.3.0
+    - replace Priority extra by optional
+  * Debhelper compatibility level 11
+  * Remove trailing whitespace in changelog
+  * Install examples
+
+ -- Ralf Treinen <treinen@debian.org>  Tue, 25 Dec 2018 18:44:23 +0100
+
+aspcud (1:1.9.4-1) unstable; urgency=medium
+
+  * New upstream release
+    - drop patches lemon-gcc7 and check-criteria which are already applied
+      in this upstream version.
+  * debian/watch: new upstream repo at github
+  * debian/copyright:
+    - license changed to MIT
+    - separate files under GPL3 are no longer part of the release
+    - add public-domain for file .ycm_extra_conf.py
+    - update source address
+    - update copyright year
+    - use https in url of format spec
+  * drop debian/aspcud.manpages which is no longer needed.
+  * Standards-version 4.1.0 (no change)
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 24 Sep 2017 12:39:48 +0200
+
+aspcud (1:1.9.1-3) unstable; urgency=medium
+
+  * Patch lemon-gcc7: update lemon for gcc-7 (closes: #872668).
+  * d/control: dropped redundant Testsuite field.
+  * Standards-Version 4.0.1 (no change)
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 10 Sep 2017 20:06:13 +0200
+
+aspcud (1:1.9.1-2) unstable; urgency=low
+
+  * Patch check-criteria: check whether field names used in optimisation
+    criteria are default fields, or declared in the preamble of the cudf
+    document. Thanks to Roland Kaminski for the patch! (closes: #780899)
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 17 Jun 2015 20:27:04 +0200
+
+aspcud (1:1.9.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/aspcud.dirs: drop empty directory usr/lib/aspcud/bin
+  * Standards-version 3.9.6 (no change).
+  * debian/control: XS-Testsuite => Testsuite
+  * debian/control: canonize URI in VCS fields
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 27 May 2015 07:44:32 +0200
+
+aspcud (1:1.9.0-2) unstable; urgency=medium
+
+  * add debian/watch
+
+ -- Ralf Treinen <treinen@debian.org>  Sat, 21 Jun 2014 11:00:37 +0200
+
+aspcud (1:1.9.0-1) experimental; urgency=low
+
+  * New upstream release. Drop patches that are now obsolete:
+    - pathes
+    - cmake-use-environment
+    - add-trendy-criterion
+    - misc11-backward-compatiblity
+  * Use install target provided by upstream:
+    - drop target override_dh_auto_install in debian/rules
+    - remove now obsolete entries from debian/aspcud.install
+  * Add version constraint on build-dependency re2c, according to INSTALL
+  * Bump versions on dependencies clasp and gringo, according to INSTALL
+  * Drop dependency on python which is no longer needed. Yeah!
+  * debian/tests/upstream: add one user criterion from each misc11 and misc12
+  * debian/aspcud.manpages: install upstream's manpage instead of our own
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 05 Mar 2014 21:41:02 +0100
+
+aspcud (1:1.8.0-3) unstable; urgency=low
+  * migrate to clasp 3:
+    - bump version in build-dependency on clasp
+    - add patch clasp3 provided by upstream
+  * add version to build-dependency on re2c, according to INSTALL file
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 26 Feb 2014 21:07:49 +0100
+
+aspcud (1:1.8.0-2) unstable; urgency=low
+
+  * Fix package autotest (closes: #735138). Thanks to Matthias Klose and
+    Martin Pitt for their indications!
+    - add dependency of the test on aspcud
+    - send all output to stderr instead of /dev/null, allow test to
+      produce output on stderr
+    - fix location of input directory
+    - use /tmp for temporary files when TMPDIR not set
+  * Add dependency on python, needed by scripts/aspcud.sh
+
+ -- Ralf Treinen <treinen@debian.org>  Tue, 14 Jan 2014 10:51:17 +0100
+
+aspcud (1:1.8.0-1) unstable; urgency=low
+
+  * New upstream release. This version runs with gringo 4 (closes: #733494)
+  * debian/control: add XS-Testsuite.
+  * Adapt patches to new upstream: pathes, add-trendy-criterion.
+  * bump dependency on gringo to >= 4
+  * restrict dependency on clasp to << 3.
+  * put test cases from version 2012.10.24 into debian/tests/cudf and
+    modify debian/tests/upstream accordingly since this upstream release
+    does not contain any test cases.
+
+ -- Ralf Treinen <treinen@debian.org>  Sat, 11 Jan 2014 09:13:51 +0100
+
+aspcud (2012.10.24-6) unstable; urgency=medium
+
+  * Upload with urgency medium to migrate to testing before gringo 4
+  * Put version constraint (<< 4) on dependency on gringo, following info
+    received from upstream.
+  * Standards-Version 3.9.5 (no change).
+  * Add as-installed package test:
+    - add DEP-8 style debian/tests/control
+    - add debian/tests/upstream test script
+
+ -- Ralf Treinen <treinen@debian.org>  Tue, 17 Dec 2013 21:53:08 +0100
+
+aspcud (2012.10.24-5) unstable; urgency=low
+
+  * debian/solvers/aspcud: quote arguments to allow for shell metacharacters
+    in arguments. Thanks to Pietro Abate for the hint.
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 09 Oct 2013 21:02:43 +0200
+
+aspcud (2012.10.24-4) unstable; urgency=low
+
+  * add sed script /usr/share/aspcud/misc11-to-misc12 based on an idea by
+    Roberto Di Cosmo (thanks!)
+  * Patch misc11-backward-compatiblity: translate optimization criteria
+    in MISC11 style to MISC12.
+
+ -- Ralf Treinen <treinen@debian.org>  Sat, 29 Jun 2013 10:41:01 +0200
+
+aspcud (2012.10.24-3) unstable; urgency=low
+
+  * Fix changelog entry of previous upload (experimental -> unstable)
+  * debian/control: update vcs-* fields (collab-maint git on alioth)
+  * drop debian/svn-deblayout, add debian/gbp.conf (force pristine-tar)
+  * debian/copyright: drop comment on omitting file cmake/macros.cmake
+    that does no longer apply
+
+ -- Ralf Treinen <treinen@debian.org>  Fri, 24 May 2013 22:25:40 +0200
+
+aspcud (2012.10.24-2) unstable; urgency=low
+
+  * upload to unstable
+
+ -- Ralf Treinen <treinen@debian.org>  Fri, 10 May 2013 22:46:41 +0200
+
+aspcud (2012.10.24-1) experimental; urgency=low
+
+  * New upstream release (upstream svn release 5904)
+  * debian/patches:
+    - pathes: refreshed for new upstream version
+    - no-cmake-errors: dropped since adopted upstream
+    - gcc4.6: dropped since adopted upstream
+    - clasp-2.1-apichange: dropped since we now build for clasp 2.1 only
+    - added cmake-use-environment: makes the toplevel Makefile pass
+      environment variables to cmake. Thanks to Roland Kaminski for the patch.
+    -added add-trendy-criterion: make aspcud recognize the "trendy"
+      optimisation criterion.
+  * debian/control:
+    - bump dependency on clasp to >= 2.1 since this is needed by this
+      upstream version
+    - bump debhelper compatibility level, and version of the build-dependency
+      on debhelper, to 9. Needed to pass dpkg-build-flags to Makefile.
+    - Standards-version 3.9.4 (no change)
+  * debian/copyright: add copyright field for lemon/* (public domain)
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 04 Nov 2012 16:34:51 +0100
+
+aspcud (2011.03.17.dfsg-6) unstable; urgency=low
+
+  * Restored build-dependency on libboost-dev which was accidentially
+    changed in the last upload.
+  * Restored changelog-entry of version 2011.03.17.dfsg-4 that was
+    accidentially mangled in the upload of 2011.03.17.dfsg-5.
+
+ -- Ralf Treinen <treinen@debian.org>  Fri, 07 Sep 2012 10:33:50 +0900
+
+aspcud (2011.03.17.dfsg-5) unstable; urgency=low
+
+  * Patch clasp-2.1-apichange: make aspcud work both with clasp 2.0 and
+    clasp 2.1. Thanks a lot to Roland Kaminski for the patch
+    (closes: #686356).
+  * debian/copyright:
+    - Fixed typo (Licence -> License)
+    - separate paragraph for the GPL3 license
+    - text of the "public domain" license.
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 02 Sep 2012 22:54:51 +0900
+
+aspcud (2011.03.17.dfsg-4) unstable; urgency=low
+
+  * Replace build-dependency on libboost1.46-dev by libboost-dev (closes:
+    #672752)
+  * standards-version 3.9.3
+  * debian/copyright: add Format line of machine-readable format 1.0,
+       fix spelling, copyright of lemon/*
+
+ -- Ralf Treinen <treinen@debian.org>  Mon, 14 May 2012 21:02:50 +0200
+
+aspcud (2011.03.17.dfsg-3) unstable; urgency=low
+
+  * source package: put solver specification in debian/solvers/ascpcud
+  * install more stuff through dh_install
+  * solver specification: use interpolation variables for arguments
+
+ -- Ralf Treinen <treinen@debian.org>  Fri, 10 Jun 2011 20:40:39 +0200
+
+aspcud (2011.03.17.dfsg-2) unstable; urgency=low
+
+  * patch gcc4.6: fix FTBFS with gcc-4.6. Patch extracted from upstream
+    svn (closes: #625071)
+
+ -- Ralf Treinen <treinen@debian.org>  Mon, 02 May 2011 22:46:38 +0200
+
+aspcud (2011.03.17.dfsg-1) unstable; urgency=low
+
+  * Intial upload (closes: #623601)
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 24 Apr 2011 17:28:26 +0200

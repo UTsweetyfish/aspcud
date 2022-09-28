@@ -1,0 +1,15 @@
+Description: Fix FTBFS against boost_1.74
+Author: Anton Gladky <gladk@debian.org>
+Last-Update: 2020-11-11
+
+--- aspcud-1.9.4.orig/libcudf/src/dependency.cpp
++++ aspcud-1.9.4/libcudf/src/dependency.cpp
+@@ -473,7 +473,7 @@ void ConflictGraph::cliques_(bool verbos
+         }
+         else {
+             PackageList candidates = component, next;
+-            boost::sort(candidates, boost::bind(&ConflictGraph::edgeSort, this, _1, _2));
++            boost::sort(candidates, boost::bind(&ConflictGraph::edgeSort, this, boost::placeholders::_1, boost::placeholders::_2));
+             // TODO: sort by out-going edges
+             do {
+                 cliques.push_back(PackageList());

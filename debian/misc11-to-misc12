@@ -1,0 +1,10 @@
+# new -> count(new)
+# removed -> count(removed)
+# changed -> count(changed)
+# notuptodate -> notuptodate(solution)
+# unsat_recommends -> unsat_recommends(solution)
+# sum(name) -> sum(name,solution)
+
+s/\([+-]\)\(new\|removed\|changed\)/\1count(\2)/g
+s/\([+-]\)\(notuptodate\|unsat_recommends\)\([^(]\|$\)/\1\2(solution)\3/g
+s/\([+-]\)sum(\([a-z]*\))/\1sum(\2,solution)/g

@@ -1,0 +1,10 @@
+The script test.sh runs a few tests. For the script to work, a debug build of
+the preprocessor has to be available in the build directory and the following
+binaries have to be available:
+  clasp          - clasp version >= 3.0
+  gringo-4       - gingo version >= 4.2.1
+  cudf-sol-check - latest version available at [1]
+
+Pathes can easily be changed in the script file.
+
+[1] git clone https://gforge.inria.fr/git/misc-competitio/misc-competitio.git

@@ -1,0 +1,22 @@
+Source: aspcud
+Section: admin
+Priority: optional
+Maintainer: Ralf Treinen <treinen@debian.org>
+Build-Depends: debhelper-compat (= 13),
+  libboost-dev (>= 1.46), cmake (>= 2.6), re2c (>= 0.13)
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
+Homepage: https://potassco.org/aspcud/
+Vcs-Git: https://salsa.debian.org/debian/aspcud.git
+Vcs-Browser: https://salsa.debian.org/debian/aspcud
+
+Package: aspcud
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ gringo (>= 4.2.1),
+ clasp (>= 3.0.0), clasp (<< 4)
+Provides: cudf-solver
+Description: CUDF solver based on Answer Set Programming
+ Aspcud is an experimental solver for package dependencies. A package
+ universe and a request to install, remove or upgrade packages have
+ to be encoded in the CUDF format.
